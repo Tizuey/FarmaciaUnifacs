@@ -1,2 +1,11 @@
 # FarmaciaUnifacs
-Este é um sistema simples de controle de amostras de remédios desenvolvido inteiramente em Java. Ele é projetado para oferecer uma solução simples para gerenciar o ciclo de vida de uma amostra de remédio, desde a sua entrada no sistema até a sua saída.
+
+Este projeto é um sistema simples de farmácia criado para fins de aprendizado.
+
+## Descrição
+
+O sistema possui funcionalidades básicas de uma farmácia, incluindo a capacidade de adicionar e gerenciar medicamentos, substâncias .
+
+## UML
+
+https://drive.google.com/file/d/1mzfNtDglg-ij-gpvIGtlGwvykdumWp4l/view?usp=sharing
