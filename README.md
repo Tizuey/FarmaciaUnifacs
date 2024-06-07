@@ -9,3 +9,5 @@ O sistema possui funcionalidades básicas de uma farmácia, incluindo a capacida
 ## UML
 
 https://drive.google.com/file/d/1mzfNtDglg-ij-gpvIGtlGwvykdumWp4l/view?usp=sharing
+
+![uml](/uml.png)
