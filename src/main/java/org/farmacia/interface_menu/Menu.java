@@ -89,7 +89,7 @@ public class Menu {
                 venderRemedio();
                 break;
             case 4:
-                RemedioService.comprarRemedio();
+                comprarRemedio();
                 menuSairadm();
                 break;
             case 5:
@@ -324,7 +324,7 @@ public static void menuCliente()  {
             barraDePesquisa2();
             break;
         case 2:
-            venderRemedio();
+            comprarRemedio();
             menuSair();
             break;
         case 3:
@@ -488,17 +488,17 @@ public static void barraDePesquisa2() {
         do {
             Scanner sc = new Scanner(System.in);
             RemedioService.listarRemedios();
-            System.out.print("Digite o nome do remédio a Comprar: ");
+            System.out.print("Digite o nome do remédio a Vender: ");
             String nome = sc.nextLine();
             nomeRemedios.add(nome);
             Remedio remedio = RemedioService.buscarRemedioPorNome3(nome);
             if (remedio != null) {
-                System.out.println("É esse o remédio que você deseja Comprar?");
+                System.out.println("É esse o remédio que você deseja Vender?");
                 System.out.println("[1] - Sim | [2] - Não");
                 System.out.print("  --> : ");
                 int resposta = sc.nextInt();
                 if(resposta == 1) {
-                    System.out.print("Digite a quantidade a comprar: ");
+                    System.out.print("Digite a quantidade a vender: ");
                     Scanner sc5 = new Scanner(System.in);
                     int quantidade = sc5.nextInt();
                     if(remedio.getQuantidade_estoque() >= quantidade) {
@@ -507,6 +507,52 @@ public static void barraDePesquisa2() {
                         System.out.println("Quantidade em estoque insuficiente.");
                         System.out.println("Em estoque :" + remedio.getQuantidade_estoque());
                     }
+                }
+            } else {
+                System.out.println("Remédio não encontrado.");
+            }
+            System.out.println("Deseja vender mais algum remédio?");
+            System.out.println("[1] - Sim | [2] - Não");
+            System.out.print("  --> : ");
+            Scanner sc3 = new Scanner(System.in);
+            opcao = sc3.nextLine();
+        } while (opcao.equals("1"));
+
+        System.out.println("Deseja finalizar a venda?");
+        System.out.println("[1] - Sim | [2] - Não");
+        System.out.print("  --> : ");
+        Scanner sc2 = new Scanner(System.in);
+        opcao = sc2.nextLine();
+        if(opcao.equals("1")) {
+            System.out.println("Venda finalizada com sucesso!");
+            System.out.println("_____________ FARMÁCIA UNIFACS _____________");
+            System.out.println("                Nota Fiscal");
+            RemedioService.notafiscal((ArrayList<String>) nomeRemedios);
+
+        } else {
+            System.out.println("A venda foi cancelada.");
+        }
+    }
+    public static void comprarRemedio() {
+        List<String> nomeRemedios = new ArrayList<>();
+        String opcao;
+        do {
+            Scanner sc = new Scanner(System.in);
+            RemedioService.listarRemedios();
+            System.out.print("Digite o nome do remédio a comprar: ");
+            String nome = sc.nextLine();
+            nomeRemedios.add(nome);
+            Remedio remedio = RemedioService.buscarRemedioPorNome3(nome);
+            if (remedio != null) {
+                System.out.println("É esse o remédio que você deseja comprar?");
+                System.out.println("[1] - Sim | [2] - Não");
+                System.out.print("  --> : ");
+                int resposta = sc.nextInt();
+                if(resposta == 1) {
+                    System.out.print("Digite a quantidade a comprar: ");
+                    Scanner sc5 = new Scanner(System.in);
+                    int quantidade = sc5.nextInt();
+                    remedio.setQuantidade_estoque(remedio.getQuantidade_estoque() - quantidade);
                 }
             } else {
                 System.out.println("Remédio não encontrado.");
@@ -524,9 +570,9 @@ public static void barraDePesquisa2() {
         Scanner sc2 = new Scanner(System.in);
         opcao = sc2.nextLine();
         if(opcao.equals("1")) {
-            System.out.println("Compra finalizada com sucesso!");
-            System.out.println("_________________FARMACIA UNIFACS_________________");
-            System.out.println("                 Nota Fiscal                      ");
+            System.out.println("compra finalizada com sucesso!");
+            System.out.println("_____________ FARMÁCIA UNIFACS _____________");
+            System.out.println("                Nota Fiscal");
             RemedioService.notafiscal((ArrayList<String>) nomeRemedios);
 
         } else {
