@@ -1,6 +1,5 @@
 package org.farmacia.interface_menu;
 
-import org.farmacia.repositories.RemedioRepository;
 import org.farmacia.services.RemedioService;
 import org.farmacia.entities.*;
 import org.farmacia.services.SubstanciaService;
@@ -77,7 +76,6 @@ public class Menu {
         System.out.println(" ----------------------");
         System.out.print("  --> : ");
         respostaTipoRemedio = sc3.nextInt();
-        Scanner cadastro = new Scanner(System.in);
         switch (respostaTipoRemedio) {
             case 1:
                 cadastro();
@@ -200,7 +198,7 @@ public class Menu {
                 menuSairadm();
                 break;
             case 6:
-                RemedioService.listarRemedios();;
+                RemedioService.listarRemedios();
                 menuSairadm();
                 break;
             case 7:
@@ -318,7 +316,6 @@ public static void menuCliente()  {
     System.out.println(" ----------------------");
     System.out.print("  --> : ");
     respostaTipoRemedio = sc3.nextInt();
-    Scanner cadastro = new Scanner(System.in);
     switch (respostaTipoRemedio) {
         case 1:
             barraDePesquisa2();
@@ -483,7 +480,7 @@ public static void barraDePesquisa2() {
     //--------------------------------------------------------------------------------------------
 // VENDER REMEDIO / COMPRAR REMEDIO --------------------------------------------------------------
     public static void venderRemedio() {
-        List<String> nomeRemedios = new ArrayList<>();
+        ArrayList<String> nomeRemedios = new ArrayList<>();
         String opcao;
         do {
             Scanner sc = new Scanner(System.in);
@@ -527,14 +524,14 @@ public static void barraDePesquisa2() {
             System.out.println("Venda finalizada com sucesso!");
             System.out.println("_____________ FARMÁCIA UNIFACS _____________");
             System.out.println("                Nota Fiscal");
-            RemedioService.notafiscal((ArrayList<String>) nomeRemedios);
+            RemedioService.notafiscal(nomeRemedios);
 
         } else {
             System.out.println("A venda foi cancelada.");
         }
     }
     public static void comprarRemedio() {
-        List<String> nomeRemedios = new ArrayList<>();
+        ArrayList<String> nomeRemedios = new ArrayList<>();
         String opcao;
         do {
             Scanner sc = new Scanner(System.in);
@@ -573,7 +570,7 @@ public static void barraDePesquisa2() {
             System.out.println("compra finalizada com sucesso!");
             System.out.println("_____________ FARMÁCIA UNIFACS _____________");
             System.out.println("                Nota Fiscal");
-            RemedioService.notafiscal((ArrayList<String>) nomeRemedios);
+            RemedioService.notafiscal(nomeRemedios);
 
         } else {
             System.out.println("A compra foi cancelada.");

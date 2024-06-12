@@ -32,7 +32,7 @@ RemedioService {
                 String subName = sc.nextLine();
                 ArrayList<Substancia> substancia = SubstanciaRepository.encontrarPorNome(subName);
                 if (substancia != null) {
-                    sub.add(substancia.get(0));
+                    sub.add(substancia.getFirst());
                 } else {
                     System.out.println("Substância não encontrada");
                 }
@@ -133,11 +133,11 @@ RemedioService {
         }
         Remedio remedio = null;
         if (res == 1) {
-            remedio = new Oral(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+            remedio = new Oral(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
         } else if (res == 2) {
-            remedio = new Topico(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+            remedio = new Topico(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
         } else if (res == 3) {
-            remedio = new Injetavel(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+            remedio = new Injetavel(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
         }
         RemedioRepository.save(remedio);
         System.out.println("Remédio cadastrado!");
@@ -171,7 +171,7 @@ RemedioService {
                     String subName = sc.nextLine();
                     ArrayList<Substancia> substancia = SubstanciaRepository.encontrarPorNome(subName);
                     if (substancia != null) {
-                        sub.add(substancia.get(0));
+                        sub.add(substancia.getFirst());
                     } else {
                         System.out.println("Substância não encontrada");
                     }
@@ -265,11 +265,11 @@ RemedioService {
 
             Remedio remedio = null;
             if (res == 1) {
-                remedio = new Oral(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+                remedio = new Oral(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
             } else if (res == 2) {
-                remedio = new Topico(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+                remedio = new Topico(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
             } else if (res == 3) {
-                remedio = new Injetavel(nome, date, preco, quantidade, concentracao, sub.get(0), modo_de_uso, dosagem);
+                remedio = new Injetavel(nome, date, preco, quantidade, concentracao, sub.getFirst(), modo_de_uso, dosagem);
             }
 
             RemedioRepository.atualizarRemedio(oldNome, remedio);
@@ -289,7 +289,7 @@ RemedioService {
             System.out.print("Digite o nome do remédio a ser removido :  ");
             String nome = scanner.nextLine();
             ArrayList<Remedio> remediosPesquisados = RemedioRepository.encontrarPorNome(nome);
-            System.out.println("Remédio encontrado: " + remediosPesquisados.get(0));
+            System.out.println("Remédio encontrado: " + remediosPesquisados.getFirst());
             if (!remediosPesquisados.isEmpty()) {
                 System.out.println("Você realmente deseja remover o remédio? digite 1 para sim, 2 para não.");
                 System.out.print("[1] - Sim   |   [2] - Não  : ");
@@ -342,8 +342,7 @@ RemedioService {
     }
 
     public static void buscarRemedioPorNome2(String sc) {
-        String nome = sc;
-        ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(nome);
+        ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(sc);
         if (!remedios.isEmpty()) {
             System.out.println("Remédios com o nome " + nome + " ");
             System.out.println("_".repeat(72));
@@ -359,9 +358,7 @@ RemedioService {
     }
 
     public static Remedio buscarRemedioPorNome3(String sc) {
-        String nome = sc;
-        ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(nome);
-
+        ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(sc);
         if (!remedios.isEmpty()) {
             System.out.println("Remédios com o nome " + nome + " ");
             System.out.println("_".repeat(35));
