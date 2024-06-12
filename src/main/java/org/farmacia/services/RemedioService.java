@@ -344,7 +344,7 @@ RemedioService {
     public static void buscarRemedioPorNome2(String sc) {
         ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(sc);
         if (!remedios.isEmpty()) {
-            System.out.println("Remédios com o nome " + nome + " ");
+            System.out.println("Remédios com o nome " + sc + " ");
             System.out.println("_".repeat(72));
             System.out.printf("%-20s | %-10s | %-10s | %-10s | %-10s%n", "Nome", "Substância", "Vencimento", "Preço", "Em Estoque");
             System.out.println("_".repeat(72));
@@ -360,7 +360,7 @@ RemedioService {
     public static Remedio buscarRemedioPorNome3(String sc) {
         ArrayList<Remedio> remedios = RemedioRepository.encontrarPorNome(sc);
         if (!remedios.isEmpty()) {
-            System.out.println("Remédios com o nome " + nome + " ");
+            System.out.println("Remédios com o nome " + sc + " ");
             System.out.println("_".repeat(35));
             System.out.printf("%-20s | %-10s%n", "Nome", "Preço");
             System.out.println("_".repeat(35));
@@ -371,7 +371,7 @@ RemedioService {
 
             return remedios.getFirst();
         } else {
-            System.out.println("No medicines found with the name " + nome);
+            System.out.println("No medicines found with the name " + sc);
             return null;
         }
     }
